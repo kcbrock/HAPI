@@ -1,6 +1,6 @@
-![](https://github.com/kcbrock/The-HAPI-Project/blob/master/rsz_hapi_project_logo.png)
+![](/The-HAPI-Project/blob/master/rsz_hapi_project_logo.png)
 
-# Welcome to the Hawaii Alien Plant Informatics (HAPI) Project
+## Welcome to the Hawaii Alien Plant Informatics (HAPI) Project
 
 We are a research project at the University of Hawaii-Manoa compiling and synthesizing all available information on the presence, identity, distribution and invasive traits of alien plants in Hawaii - both cultivated and not. 
 
@@ -19,6 +19,6 @@ Additionally, we greatly appreciate anyone who is willing to share their data to
 
 ## Contact Us
 
-* University of Hawaii - Manoa (Botany Department)
+### University of Hawaii - Manoa (Botany Department)
 * Kelsey Brock (kcbrock -at- hawaii.edu)
 * Curt Daehler (daehler -at- hawaii.edu)
