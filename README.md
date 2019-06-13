@@ -1,39 +1,25 @@
 ![](https://github.com/kcbrock/The-HAPI-Project/blob/master/HAPI_Project_logo.jpg)
 
-## Welcome to the Hawaii Alien Plant Informatics (HAPI) Project
+# Welcome to the Hawaii Alien Plant Informatics (HAPI) Project
 
-You can use the [editor on GitHub](https://github.com/kcbrock/HAPI/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+We are a research project at the University of Hawaii-Manoa compiling and synthesizing all available information on the presence, identity, distribution and invasive traits of alien plants in Hawaii - both cultivated and not. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## The HAPI Data Portal
+Ultimately, this information will be assembled into a user-friendly online data portal that managers can use to help inform decisions about managing invasive species.
 
-### Markdown
+[LINK TO DATA PORTAL PROTOTYPE](https://www.surveygizmo.com/s3/4291223/Hawaii-Alien-Plant-Informatics-HAPI-Project-Alien-Plant-Data-Survey)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Take our alien plant data survey
+Additionally, we greatly appreciate anyone who is willing to share their data to benefit our project. Individuals or organizations will be fully credited for the data they provide to us, and plans to make the compiled data available to a select group of researchers and conservationists is currently underway.  Access by the general public is not anticipated in the next two-three years, but we are happy to discuss privacy issues and will notify contributors before changes to access permission take place.
 
-```markdown
-Syntax highlighted code block
+[LINK TO SURVEY](https://www.surveygizmo.com/s3/4291223/Hawaii-Alien-Plant-Informatics-HAPI-Project-Alien-Plant-Data-Survey)
 
-# Header 1
-## Header 2
-### Header 3
+## Thanks to our supporters!
+![](https://github.com/kcbrock/The-HAPI-Project/blob/master/HISC-logo-green2.png)
+![](https://github.com/kcbrock/The-HAPI-Project/blob/master/PCSU_logo.jpg)
 
-- Bulleted
-- List
+## Contact Us
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kcbrock/HAPI/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+University of Hawaii - Manoa (Botany Department)
+Kelsey Brock (kcbrock -at- hawaii.edu)
+Curt Daehler (daehler -at- hawaii.edu)
