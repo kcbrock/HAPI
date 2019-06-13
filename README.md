@@ -15,8 +15,7 @@ Additionally, we greatly appreciate anyone who is willing to share their data to
 [LINK TO SURVEY](https://www.surveygizmo.com/s3/4291223/Hawaii-Alien-Plant-Informatics-HAPI-Project-Alien-Plant-Data-Survey)
 
 ## Thanks to our supporters!
-![](https://github.com/kcbrock/The-HAPI-Project/blob/master/HISC-logo-green2.png)
-![](https://github.com/kcbrock/The-HAPI-Project/blob/master/PCSU_logo.jpg)
+![](https://github.com/kcbrock/The-HAPI-Project/blob/master/Mahalo%20slide.jpg)
 
 ## Contact Us
 
