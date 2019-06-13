@@ -1,4 +1,4 @@
-![](/kcbrock/The-HAPI-Project/blob/master/rsz_hapi_project_logo.png)
+![](https://github.com/kcbrock/The-HAPI-Project/blob/master/rsz_hapi_project_logo.png)
 
 ## Welcome to the Hawaii Alien Plant Informatics (HAPI) Project
 
@@ -18,7 +18,6 @@ Additionally, we greatly appreciate anyone who is willing to share their data to
 ![](https://github.com/kcbrock/The-HAPI-Project/blob/master/Mahalo%20slide.jpg)
 
 ## Contact Us
-
 ### University of Hawaii - Manoa (Botany Department)
 * Kelsey Brock (kcbrock -at- hawaii.edu)
 * Curt Daehler (daehler -at- hawaii.edu)
