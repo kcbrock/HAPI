@@ -1,4 +1,4 @@
-![HAPIlogo](https://github.com/kcbrock/The-HAPI-Project/blob/master/HAPI%20Project%20logo.jpg)
+![HAPIlogo](https:\\github.com\kcbrock\The-HAPI-Project\blob\master\HAPI%20Project%20logo.jpg)
 
 ## Welcome to the Hawaii Alien Plant Informatics (HAPI) Project
 
