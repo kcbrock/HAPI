@@ -1,4 +1,4 @@
-![](https://github.com/kcbrock/The-HAPI-Project/blob/master/HAPI_Project_logo.jpg)
+![](https://github.com/kcbrock/The-HAPI-Project/blob/master/rsz_hapi_project_logo.png)
 
 # Welcome to the Hawaii Alien Plant Informatics (HAPI) Project
 
@@ -7,7 +7,7 @@ We are a research project at the University of Hawaii-Manoa compiling and synthe
 ## The HAPI Data Portal
 Ultimately, this information will be assembled into a user-friendly online data portal that managers can use to help inform decisions about managing invasive species.
 
-[LINK TO DATA PORTAL PROTOTYPE](https://www.surveygizmo.com/s3/4291223/Hawaii-Alien-Plant-Informatics-HAPI-Project-Alien-Plant-Data-Survey)
+[LINK TO DATA PORTAL PROTOTYPE](https://github.com/kcbrock/HAPI-Data-Portal-Prototype/blob/master/README.md)
 
 ## Take our alien plant data survey
 Additionally, we greatly appreciate anyone who is willing to share their data to benefit our project. Individuals or organizations will be fully credited for the data they provide to us, and plans to make the compiled data available to a select group of researchers and conservationists is currently underway.  Access by the general public is not anticipated in the next two-three years, but we are happy to discuss privacy issues and will notify contributors before changes to access permission take place.
