@@ -1,4 +1,4 @@
-![](The-HAPI-Project/blob/master/rsz_hapi_project_logo.png)
+![](/kcbrock/The-HAPI-Project/blob/master/rsz_hapi_project_logo.png)
 
 ## Welcome to the Hawaii Alien Plant Informatics (HAPI) Project
 
