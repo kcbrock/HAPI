@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome to the Hawaii Alien Plant Informatics (HAPI) Project
 
 You can use the [editor on GitHub](https://github.com/kcbrock/HAPI/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
