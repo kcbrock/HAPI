@@ -19,6 +19,6 @@ Additionally, we greatly appreciate anyone who is willing to share their data to
 
 ## Contact Us
 
-University of Hawaii - Manoa (Botany Department)
-Kelsey Brock (kcbrock -at- hawaii.edu)
-Curt Daehler (daehler -at- hawaii.edu)
+* University of Hawaii - Manoa (Botany Department)
+* Kelsey Brock (kcbrock -at- hawaii.edu)
+* Curt Daehler (daehler -at- hawaii.edu)
