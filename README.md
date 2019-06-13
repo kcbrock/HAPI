@@ -2,10 +2,11 @@
 
 ## __Welcome to the Hawaiʻi Alien Plant Informatics (HAPI) Project__
 
-We are a research project at the University of Hawaiʻi-Manoa compiling and synthesizing all available information on the presence, identity, distribution and invasive traits of alien plants in Hawaii - both cultivated and not. 
+We are a research project at the University of Hawaiʻi-Manoa department of Botany applying an all species, biodiversity informatics approach to understanding plant invasions and informing management in Hawaiʻi. We're partnering with a wide range of people, from on-the ground control groups, citizen scientists and research organizations, to compile and synthesize the most comprehensize data set ever compiled of Hawaiʻi's alien plants. This data set includes information the presence, identity, distribution and invasive traits of alien plants in Hawaii - both cultivated and not. 
 
 ## The HAPI Data Portal
-We are in the process of designing a data portal, which will be assembled into a user-friendly online format that managers can use to help inform decisions about managing invasive species.
+
+One of our top priorities is to assemble a multi-purpose data portal that managers can easily access online to help inform decisions about managing invasive species statewide. The portal will be equipped with multiple filtering options so that managers can specify their managment area of interest, distribution type, and weed risk or impact traits.
 
 [LINK TO DATA PORTAL PROTOTYPE](https://github.com/kcbrock/HAPI-Data-Portal-Prototype/blob/master/README.md)
 
@@ -16,7 +17,6 @@ We greatly appreciate anyone who is willing to share their Hawaiʻi plant data t
 
 
 __Contact Us__
-### University of Hawaiʻi - Manoa (Botany Department)
 * Kelsey Brock (PhD Student; kcbrock -at- hawaii.edu)
 * Curt Daehler (PI & Professor; daehler -at- hawaii.edu)
 
