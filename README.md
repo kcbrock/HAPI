@@ -6,7 +6,7 @@ We are a research project at the University of Hawaiʻi-Manoa (Botany Dept.) app
 
 ## The HAPI Data Portal
 
-One of our top priorities is to assemble a multi-purpose data portal that managers can easily access online to help inform decisions about managing invasive species statewide. This decision support tool will be equipped with multiple filtering options so that managers can specify their managment area of interest, distribution type, and weed risk or impact traits.
+One of our top priorities is to assemble a multi-purpose, map-based data portal that managers can easily access online to help inform decisions about managing invasive species statewide. This decision support tool will be equipped with multiple filtering options so that managers can specify their managment area of interest, distribution type, and weed risk or impact traits.
 
 [LINK TO DATA PORTAL MOCKUP](https://github.com/kcbrock/The-HAPI-Project/blob/master/HAPI-portal-mockup.png)
 
