@@ -2,7 +2,7 @@
 
 ## __Welcome to the Hawaiʻi Alien Plant Informatics (HAPI) Project__
 
-We are a research project at the University of Hawaiʻi-Manoa (Botany Dept.) applying an all species, biodiversity informatics approach to understanding plant invasions and informing their management in Hawaiʻi. We're partnering with a wide range of people, from on-the ground control groups, citizen scientists and research organizations, to compile and synthesize the most comprehensize data set ever compiled of Hawaiʻi's alien plants. This data set includes information the presence, identity, distribution and invasive traits of alien plants in Hawaii - both cultivated and not. 
+We are a research project at the University of Hawaiʻi-Manoa (Botany Dept.) applying an all species, biodiversity informatics approach to understanding plant invasions and informing their management in Hawaiʻi. We're partnering with a wide range of people, from on-the ground control groups, citizen scientists and research organizations, to synthesize the most comprehensize data set ever compiled of Hawaiʻi's alien plants. This data set includes information the presence, identity, distribution and invasive traits of alien plants in Hawaii - both cultivated and not. 
 
 ## The HAPI Data Portal
 
