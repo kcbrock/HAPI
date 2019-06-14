@@ -8,7 +8,7 @@ We are a research project at the University of Hawaiʻi-Manoa department of Bota
 
 One of our top priorities is to assemble a multi-purpose data portal that managers can easily access online to help inform decisions about managing invasive species statewide. This decision support tool will be equipped with multiple filtering options so that managers can specify their managment area of interest, distribution type, and weed risk or impact traits.
 
-[LINK TO DATA PORTAL MOCKUP](https://github.com/kcbrock/HAPI-Data-Portal-Prototype/blob/master/README.md)
+[LINK TO DATA PORTAL MOCKUP](https://github.com/kcbrock/The-HAPI-Project/blob/master/HAPI-portal-mockup.png)
 
 ## Share your Data and Expertise with Us
 We greatly appreciate anyone who is willing to share their Hawaiʻi plant data to benefit our project.  We're primarily looking for data minimally containing location (ideally GPS coordinates) and an identification to the species level, although some genera-level IDs can be useful for rare plants. Individuals or organizations will be fully credited for the data they provide to us, and plans to make the compiled data available to a select group of researchers and conservationists is currently underway.  Access by the general public is not anticipated in the next one-two years, but we are happy to discuss privacy issues and will notify contributors before changes to access permission take place.
