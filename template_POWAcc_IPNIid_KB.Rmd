@@ -1,0 +1,317 @@
+---
+title: 'Retrieving Accepted Names from Kew''s Plants of the World and Assigning an
+  IPNI Identification Number '
+author: "Kelsey Brock"
+date: "2/18/2020"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+  
+  experimenting with alt versions
+---
+## __Part 1: Getting POW Accepted Names and IPNI IDS for each Taxon__
+# Step 1: Set Up R
+```{r}
+require(knitr)
+knitr::opts_knit$set(root.dir = "C:/Users/Kelsey/Documents/rwork/hapi") #set the working directory
+```
+
+```{r}
+#get the needed packages
+if(!require("pacman")){
+	install.packages("pacman")
+	library(pacman)}
+p_load( "taxize", "dplyr", "reshape2", "data.table",
+       "profvis", "magrittr", "knitr", "kableExtra")
+```
+
+# Step 2: Read in a List of Species Names
+```{r}
+### Read in a csv file with your species on it.
+spplist <- read.csv("sample_spp_list.csv", header=T, sep=',', stringsAsFactors=F)
+head(spplist, 25)
+```
+- In this sample data set of 25 taxa, I have included misspellings (e.g. Vigna sandwicensiss), subspecies (Chamaecrista nictitans subsp. patellaria), varieties (Chamaecrista nictitans subsp. patellaria var. glabrata), cultivars (Citrus 'Shasta Gold'), and things that likely won't get a database hit (Citrus unknownium).  There's also an example of bad capitalization and punctuation (asystasia gangetica subsp micrantha) and an instance where the authority is included (Fouquieria columnaris (Kellogg) Kellogg ex Curran).
+
+# Step 3: Make sure each name is a valid synonym (even if it's not the "accepted" name that you ultimately want)
+
+- This step will also take care of misspellings and capitalizations of genus versus specific epithets
+
+### Checking for taxonomic reference databases; we're looking for The International Plant Names Index
+```{r}
+gnr_datasources()
+# IPNI is # 167
+```
+
+### Now we run the Global Names Resolver, asking it only return the nearest matching IPNI name
+
+```{r}
+gnr.long <- spplist$Taxa %>% gnr_resolve(data_source_ids = 167, best_match_only=T, with_canonical_ranks=T)
+```
+
+```{r}
+head(gnr.long)
+```
+- You can see that it returns a column called "matched_name2" with the viable synonym.
+
+- Because the Global Names Resolver can be time consuming for long species lists, it's probably wise to save the output as a csv.
+```{r}
+#writing to csv file
+write.csv(gnr.long,
+            "samplegnr.csv", 
+             row.names = F, quote = F)
+```
+```{r}
+#reading it in again, in case you had to restart R for some reason
+gnr.long <- read.csv("samplegnr.csv", 
+                      header=T, stringsAsFactors = F)
+```
+
+
+# Step 4: Return an ID Number that Matches the Accepted Name (According to Plants of the World)
+
+- this step will prompt you if the database is unsure about which name to return.  You have to specify the row number of taxa you want to select as it runs through them.
+```{r, echo=T, results='hide', message=FALSE}
+#fetching IPNI ids from POW
+pow.output <- get_pow(gnr.long$matched_name2, db = "pow", accepted = TRUE, ask = TRUE)
+```
+```{r}
+head(pow.output)
+```
+-You can see that and IPNI id has been returned in the "ids" column.
+-Because the get_pow() function can be time consuming for long species lists, it's probably wise to save the output as a csv.
+```{r}
+#writing to csv file
+write.csv(as.data.frame(pow.output),
+            "sample_pow_output.csv", 
+             row.names = F, quote = F)
+```
+```{r}
+#reading it in again, in case you had to restart R for some reason
+pow.output <- read.csv("sample_pow_output.csv", 
+                      header=T, stringsAsFactors = F)
+```
+
+-Now to combine the IPNI IDs back to the original names
+```{r}
+inputname_ID <- as.data.frame(cbind(gnr.long$user_supplied_name, gnr.long$matched_name2, pow.output$ids))
+
+```
+```{r}
+colnames(inputname_ID) = c("user_supplied_name", "matched_name2", "IPNI_ID")
+head(inputname_ID)
+```
+
+# Step 5: Separate the troublemakers
+```{r}
+#these names have returned an IPNI ID
+inputname_ID.NAsdrop <- subset(inputname_ID, (!is.na(inputname_ID$IPNI_ID)))
+nrow(inputname_ID.NAsdrop)
+```
+```{r}
+#these names have NOT returned an IPNI ID and need special human attention
+inputname_ID.NAonly <- subset(inputname_ID, (is.na(inputname_ID$IPNI_ID)))
+nrow(inputname_ID.NAonly)
+```
+```{r}
+#writing the trouble makers to csv file (deal with them later)
+write.csv(inputname_ID.NAonly,
+            "NA_NeedsHumanAttention.csv", 
+             row.names = F, quote = F)
+```
+
+# Step 6: Use the IPNI ID to return data (name, rank, family, genus, native range, etc)
+
+### First, we'll get taxon name
+```{r}
+#writing a function that will return the taxon name associated with the IPNI ID according to POW
+Get_taxonname <- function(spnames){
+  temp <- c()
+  temp <- pow_lookup(spnames)
+ ifelse(is.null(temp$meta$name) == "TRUE", "ERROR", temp$meta$name)
+  }
+```
+```{r}
+# applying the function to your list
+POW.taxonname <- sapply(inputname_ID.NAsdrop$IPNI_ID[], Get_taxonname)
+```
+### Second, we'll get family 
+```{r}
+#writing a function that will return the family name associated with the IPNI ID according to POW
+Get_family <- function(spnames){
+  temp <- c()
+  temp <- pow_lookup(spnames)
+ ifelse(is.null(temp$meta$family) == "TRUE", "ERROR", temp$meta$family)
+  }
+```
+```{r}
+# applying the function to your list
+POW.family <- sapply(inputname_ID.NAsdrop$IPNI_ID[], Get_family)
+```
+### Third, we'll get genus 
+```{r}
+#writing a function that will return the genus name associated with the IPNI ID according to POW
+Get_genus <- function(spnames){
+  temp <- c()
+  temp <- pow_lookup(spnames)
+ ifelse(is.null(temp$meta$genus) == "TRUE", "ERROR", temp$meta$genus)
+  }
+```
+```{r}
+# applying the function to your list
+POW.genus <- sapply(inputname_ID.NAsdrop$IPNI_ID[], Get_genus)
+```
+### Fourth, we'll get rank
+```{r}
+#writing a function that will return the taxon rank associated with the IPNI ID according to POW
+Get_taxonrank <- function(spnames){
+  temp <- c()
+  temp <- pow_lookup(spnames)
+ ifelse(is.null(temp$meta$rank) == "TRUE", "ERROR", temp$meta$rank)
+  }
+```
+```{r}
+# applying the function to your list
+# this will return a bunch of red text warnings, but disregard
+POW.taxonrank <- sapply(inputname_ID.NAsdrop$IPNI_ID[], Get_taxonrank)
+```
+### Fifth, we'll get author
+```{r}
+#writing a function that will return the taxon rank associated with the IPNI ID according to POW
+Get_author <- function(spnames){
+  temp <- c()
+  temp <- pow_lookup(spnames)
+ ifelse(is.null(temp$meta$author) == "TRUE", "ERROR", temp$meta$author)
+  }
+```
+```{r}
+# applying the function to your list
+# this will return a bunch of red text warnings, but disregard
+POW.author <- sapply(inputname_ID.NAsdrop$IPNI_ID[], Get_author)
+```
+
+# Step 7: combining the original names, IPNI IDs and other data into a single spreadsheet
+
+```{r}
+#getting the data attached to the IPNI ID in one place
+POWinput <- cbind(POW.family, POW.genus, POW.taxonname,POW.author, POW.taxonrank)
+POWinput <- as.data.frame(POWinput)
+head(POWinput)
+```
+```{r}
+POWAcc_IPNIid <- cbind(inputname_ID.NAsdrop, POWinput)
+head(POWAcc_IPNIid)
+```
+
+# Step 8: labelling the names that returned a duplicatedIPNI ID and POW taxonname
+
+- this is especially useful if you have many synonymous names in your user supplied names list
+```{r}
+POWAcc_IPNIid <- data.table( POWAcc_IPNIid )
+POWAcc_IPNIid<- POWAcc_IPNIid[ , duplicateCount := 1:.N , by = "IPNI_ID" ]
+head(POWAcc_IPNIid)
+```
+
+# Done! ... wrting to csv file
+```{r}
+#writing to csv file
+write.csv(POWAcc_IPNIid,
+            "POWAcc_IPNIid.csv", 
+             row.names = F)
+```
+
+
+
+
+## __Part 2: Getting IPNI IDs for Families and Genera in your species list__
+
+# Step 1: Compile a list of both families and genera using your previous output
+```{r}
+families <- as.character(POWAcc_IPNIid$POW.family)
+genera <- as.character(POWAcc_IPNIid$POW.genus)
+head(families,44)
+```
+```{r}
+#remove duplicates
+fam.dupsremoved <- unique( families[] )
+gen.dupsremoved <- unique( genera[] )
+fam.gen <- c(fam.dupsremoved,gen.dupsremoved)
+```
+```{r}
+length(fam.dupsremoved)
+```
+```{r}
+length(gen.dupsremoved)
+```
+
+
+# Step 2: Fetch IPNI IDs and associated data for families
+
+```{r, echo=T, results='hide'}
+fam.IDs <- get_pow(fam.dupsremoved, db = "pow", rank_filter = "family", accepted = TRUE, ask = TRUE)
+```
+# Step 3: Fetch IPNI IDs and associated data for genera
+```{r, echo=T, results='hide'}
+gen.IDs <- get_pow(gen.dupsremoved, db = "pow", rank_filter = "genus", accepted = TRUE, ask = TRUE)
+```
+
+```{r}
+fam.IDs.df <- as.data.frame(fam.IDs)
+fam.IDs.df <- cbind(fam.dupsremoved, fam.IDs.df$ids)
+colnames(fam.IDs.df) <- c("names", "IPNI_ID")
+gen.IDs.df <- as.data.frame(gen.IDs)
+gen.IDs.df <- cbind(gen.dupsremoved, gen.IDs.df$ids)
+colnames(gen.IDs.df) <- c("names", "IPNI_ID")
+head(gen.IDs.df)
+```
+```{r}
+#combine genera and families into a single dataframe
+fam.gen.IDs.df <- rbind(fam.IDs.df, gen.IDs.df)
+fam.gen.IDs.df <- as.data.frame(fam.gen.IDs.df)
+nrow(fam.gen.IDs.df)
+```
+
+# Step 4: Separate the troublemakers
+```{r}
+#these names have returned an IPNI ID
+fam.gen.ID.NAsdrop <- subset(fam.gen.IDs.df, (!is.na(fam.gen.IDs.df$IPNI_ID)))
+nrow(fam.gen.ID.NAsdrop)
+```
+```{r}
+#these names have NOT returned an IPNI ID and need special human attention
+fam.gen.IDs.NAonly <- subset(fam.gen.IDs.df, (is.na(fam.gen.IDs.df$IPNI_ID)))
+nrow(fam.gen.IDs.NAonly)
+```
+```{r}
+#writing the trouble makers to csv file (deal with them later)
+write.csv(fam.gen.IDs.NAonly,
+            "NA_Fam_Genera_NeedsHumanAttention.csv", 
+             row.names = F, quote = F)
+```
+
+# Step 5: Fetch data from POW database using IPNI ID
+```{r}
+POW.fam.gen.name <- sapply(fam.gen.ID.NAsdrop$IPNI_ID[], Get_taxonname)
+POW.fam.gen.author <- sapply(fam.gen.ID.NAsdrop$IPNI_ID[], Get_author)
+POW.fam.gen.rank <- sapply(fam.gen.ID.NAsdrop$IPNI_ID[], Get_taxonrank)
+POW.fam.gen.family <- sapply(fam.gen.ID.NAsdrop$IPNI_ID[], Get_family)
+```
+```{r}
+#getting the data attached in one place
+POWinput.fam.gen <- cbind(POW.fam.gen.family, POW.fam.gen.name, POW.fam.gen.author, POW.fam.gen.rank)
+POWinput.fam.gen <- as.data.frame(POWinput.fam.gen)
+head(POWinput.fam.gen)
+```
+```{r}
+POWAcc_IPNIid.fam.gen <- cbind(fam.gen.ID.NAsdrop, POWinput.fam.gen)
+head(POWAcc_IPNIid.fam.gen)
+```
+
+# Done! ... wrting to csv file
+```{r}
+#writing to csv file
+write.csv(POWAcc_IPNIid.fam.gen,
+            "POWAcc_IPNIid.fam.gen.csv", 
+             row.names = F)
+```
