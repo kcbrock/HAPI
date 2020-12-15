@@ -1,12 +1,14 @@
 ---
-title: 'Retrieving Accepted Names from Kew's Plants of the World and Assigning an
-  IPNI Identification Number ' - Alternate version.
+title: 'Retrieving Accepted Names from Kew''s Plants of the World and Assigning an
+  IPNI Identification Number '
 author: "Kelsey Brock"
 date: "2/18/2020"
 output:
   html_document: default
   word_document: default
   pdf_document: default
+  
+  experimenting with alt versions
 ---
 ## __Part 1: Getting POW Accepted Names and IPNI IDS for each Taxon__
 # Step 1: Set Up R
@@ -20,7 +22,7 @@ knitr::opts_knit$set(root.dir = "C:/Users/Kelsey/Documents/rwork/hapi") #set the
 if(!require("pacman")){
 	install.packages("pacman")
 	library(pacman)}
-p_load( "taxize", "dplyr", "reshape2", "data.table",
+p_load( "dplyr", "reshape2", "data.table",
        "profvis", "magrittr", "knitr", "kableExtra")
 ```
 
