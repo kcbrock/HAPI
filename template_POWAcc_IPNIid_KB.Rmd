@@ -1,12 +1,14 @@
 ---
-title: 'Retrieving Accepted Names from Kew's Plants of the World and Assigning an
-  IPNI Identification Number ' alt version branch test
+title: 'Retrieving Accepted Names from Kew''s Plants of the World and Assigning an
+  IPNI Identification Number '
 author: "Kelsey Brock"
 date: "2/18/2020"
 output:
   html_document: default
   word_document: default
   pdf_document: default
+  
+  experimenting with alt versions
 ---
 ## __Part 1: Getting POW Accepted Names and IPNI IDS for each Taxon__
 # Step 1: Set Up R
